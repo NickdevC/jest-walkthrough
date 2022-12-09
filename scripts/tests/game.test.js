@@ -1,6 +1,7 @@
 /**
  * @jest-environment jsdom
  */
+const { game } = require("../game");
 
 beforeAll(() => {
     let fs = require("fs");
@@ -8,4 +9,10 @@ beforeAll(() => {
     document.open();
     document.write(fileContents);
     document.close();
-})
+});
+
+describe("game object contains correct keys", () => {
+    test("score key exists", () => {
+        expect("score" in game).toBe(true);
+    });
+});
